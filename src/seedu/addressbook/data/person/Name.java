@@ -4,6 +4,7 @@ import seedu.addressbook.data.exception.IllegalValueException;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Represents a Person's name in the address book.
@@ -66,9 +67,11 @@ public class Name {
         if (!(other instanceof Name)) {
             return false;
         }
-        String nameLowerCase = this.fullName.toLowerCase();
-        String otherLowerCase = other.fullName.toLowerCase();
-        if (nameLowerCase.equals(otherLowerCase)) {
+        List<String> wordsInNameLowerCase = this.getWordsInName().stream().map(w -> w.toLowerCase())
+                .collect(Collectors.toList());
+        List<String> wordsInOtherLowerCase = other.getWordsInName().stream().map(w -> w.toLowerCase())
+                .collect(Collectors.toList());
+        if (wordsInNameLowerCase.equals(wordsInOtherLowerCase)) {
             return true;
         }
         return false;
