@@ -24,6 +24,13 @@ public class NameTest {
     }
 
     @Test
+    public void name_null_returnsFalse() throws IllegalValueException {
+        Name name0 = new Name("How Si Wei");
+        Name name1 = null;
+        assertNameNotSimilar(name0, name1);
+    }
+
+    @Test
     public void name_differentCase_returnsTrue() throws IllegalValueException {
         Name name0 = new Name("How Si Wei");
         Name name1 = new Name("how si wei");
