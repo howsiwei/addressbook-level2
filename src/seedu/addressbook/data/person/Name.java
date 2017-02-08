@@ -60,7 +60,18 @@ public class Name {
      * Two names are considered similar if ...
      */
     public boolean isSimilar(Name other) {
-        return this.equals(other);
+        if (other == this) {
+            return true;
+        }
+        if (!(other instanceof Name)) {
+            return false;
+        }
+        String nameLowerCase = this.fullName.toLowerCase();
+        String otherLowerCase = other.fullName.toLowerCase();
+        if (nameLowerCase.equals(otherLowerCase)) {
+            return true;
+        }
+        return false;
     }
 
     @Override
